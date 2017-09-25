@@ -1,0 +1,21 @@
+vagrant:
+  provider: 'vsphere'
+
+vsphere:
+    host: 'vavcdevops1.lowes.com'
+    insecure: true
+    network: 'public_network'
+    # unique id assigned to developer to ensure unique vm names
+
+
+theservers:
+  - name: 'dockerhost'
+    synced_folders:
+    - name: 'homedir'
+      type: 'rsync' # must be rsync for now
+      hostpath: '.'
+      guestpath: '/vagrant'
+    vsphere:
+      template_name: 'DevOpsFast/vagrant-vsphere-v2-enlargedfs'
+      customization_spec_name: 'LinuxTest'
+    type: 'dockerhost'
