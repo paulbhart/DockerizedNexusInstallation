@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/DockerizedNexusInstallation.iml" filepath="$PROJECT_DIR$/.idea/DockerizedNexusInstallation.iml" />
+      <module fileurl="file://$USER_HOME$/.vagrant.d/gems/2.2.5/gems/nugrant-2.1.3/nugrant-2.1.3.iml" filepath="$USER_HOME$/.vagrant.d/gems/2.2.5/gems/nugrant-2.1.3/nugrant-2.1.3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../vagrant/vagrant.iml" filepath="$PROJECT_DIR$/../vagrant/vagrant.iml" />
+      <module fileurl="file://$USER_HOME$/.vagrant.d/gems/2.2.5/gems/vagrant-hostmanager-1.8.7/vagrant-hostmanager-1.8.7.iml" filepath="$USER_HOME$/.vagrant.d/gems/2.2.5/gems/vagrant-hostmanager-1.8.7/vagrant-hostmanager-1.8.7.iml" />
+      <module fileurl="file://$USER_HOME$/.vagrant.d/gems/2.2.5/gems/vagrant-vsphere-1.12.1/vagrant-vsphere-1.12.1.iml" filepath="$USER_HOME$/.vagrant.d/gems/2.2.5/gems/vagrant-vsphere-1.12.1/vagrant-vsphere-1.12.1.iml" />
+    </modules>
+  </component>
+</project>

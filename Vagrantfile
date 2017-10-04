@@ -1,4 +1,4 @@
-required_plugins = %w(vagrant-vsphere nugrant vagrant-scp vagrant-hostmanager vagrant-pe_build vagrant-triggers)
+required_plugins = %w(vagrant-vsphere nugrant vagrant-scp vagrant-hostmanager vagrant-triggers)
 plugins_to_install = required_plugins.select {|plugin| not Vagrant.has_plugin? plugin}
 if not plugins_to_install.empty?
   puts "Installing plugins: #{plugins_to_install.join(' ')}"
@@ -9,15 +9,14 @@ if not plugins_to_install.empty?
   end
 end
 
-# TODO add automatic installation of docker-containercd ansi
+
 
 Vagrant.configure("2") do |config|
 
-  config.hostmanager.manager_host = false
+  config.HostManager.manage_host = false
   if config.user.key?('host') and config.user.host.key?('hostmanager') and config.user.host.hostmanager.key?('manage_host')
     config.hostmanager.manage_host = config.user.host.hostmanager.manage_host
   end
-
   config.hostmanager.manage_guest = true
   config.hostmanager.ignore_private_ip = false
   config.hostmanager.include_offline = true
@@ -75,11 +74,27 @@ Vagrant.configure("2") do |config|
       # PROVISIONERS
       node.vm.provision :hostmanager
 
+
+
       if server.type == 'dockerhost'
         node.hostmanager.aliases = server.name + ".sandbox.lowes.dev"
         node.vm.hostname = server.name
+
+        # Add ansible roles to local installation of ansible
+        node.trigger.before :provision do |local|
+          run "ansible-galaxy install mongrelion.docker"
+        end
+
+        # Update vm to latest
+        node.vm.provision "shell", inline: "yum update -y"
+
+        # Install Docker on the vm
+        node.vm.provision "ansible" do |ansible|
+          # install basic dockerhost software
+          ansible.playbook = "manage-docker-host/vagrant.yml"
+        end
         # testing this out https://ansible.github.io/ansible-container-demo/
-        node.vm.provision "shell", path: ""
+        # node.vm.provision "shell", path: ""
       end
 
       if config.user.developer.key?('poststepscript')

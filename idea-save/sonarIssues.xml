@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="issues">
+    <option name="index">
+      <map>
+        <entry key="$USER_HOME$/.vagrant.d/gems/2.2.5/gems/vagrant-hostmanager-1.8.7/Gemfile">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/.vagrant.d/gems/2.2.5/gems/vagrant-hostmanager-1.8.7/lib/vagrant-hostmanager/plugin.rb">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/.vagrant.d/gems/2.2.5/gems/vagrant-vsphere-1.12.1/Gemfile">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/.vagrant.d/gems/2.2.5/gems/vagrant-vsphere-1.12.1/vagrant-vsphere-1.12.1.iml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Gemfile">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Gemfile.lock">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Readme.md">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Vagrantfile">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../vagrant/Gemfile.lock">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../vagrant/README.md">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../vagrant/vagrant.gemspec">
+          <value>
+            <set />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
