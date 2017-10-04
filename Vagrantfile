@@ -13,7 +13,7 @@ end
 
 Vagrant.configure("2") do |config|
 
-  config.HostManager.manage_host = false
+  config.hostmanager.manage_host = false
   if config.user.key?('host') and config.user.host.key?('hostmanager') and config.user.host.hostmanager.key?('manage_host')
     config.hostmanager.manage_host = config.user.host.hostmanager.manage_host
   end
@@ -81,17 +81,26 @@ Vagrant.configure("2") do |config|
         node.vm.hostname = server.name
 
         # Add ansible roles to local installation of ansible
+        # TODO(phart) move this into the ansible provision step
+        # https://www.vagrantup.com/docs/provisioning/ansible_common.html
         node.trigger.before :provision do |local|
           run "ansible-galaxy install mongrelion.docker"
+          run "ansible-galaxy install geerlingguy.docker"
         end
 
         # Update vm to latest
+        node.vm.provision "shell", inline: "yum install container-selinux"
         node.vm.provision "shell", inline: "yum update -y"
+        # TODO(phart) talk to engineering about whether this command is a problem?
+        node.vm.provision "shell", inline: "subscription-manager repos --enable=git "
 
         # Install Docker on the vm
         node.vm.provision "ansible" do |ansible|
           # install basic dockerhost software
+          ansible.verbose = "-vvv"
+          ansible.inventory_path = "~/.ansible/hosts"
           ansible.playbook = "manage-docker-host/vagrant.yml"
+
         end
         # testing this out https://ansible.github.io/ansible-container-demo/
         # node.vm.provision "shell", path: ""

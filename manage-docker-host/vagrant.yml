@@ -1,0 +1,5 @@
+- hosts: dockerhost
+  roles:
+    - geerlingguy.docker
+
+#    TODO(phart) create the hosts name on the fly (extract userid)
