@@ -260,3 +260,7 @@ local.properties
 /.idea/
 /out/
 
+/hosts
+/localhost/hosts
+/localhost/main.retry
+/idea-save/

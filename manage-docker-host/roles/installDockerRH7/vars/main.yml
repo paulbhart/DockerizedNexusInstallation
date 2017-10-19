@@ -1,0 +1,4 @@
+docker_edition: 'ee'
+# dockerurl must be provided as it is user specific om vagrant.yml, but looks like
+# dockerurl: 'https://storebits.docker.com/ee/rhel/sub-111111111-d1ef-4ea4-9552-6650de0e959c'
+rhversion: '7'

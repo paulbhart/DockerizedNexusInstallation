@@ -1,5 +1,12 @@
 - hosts: dockerhost
+  vars:
+    docker_edition: 'ee'
+    dockerurl: 'https://storebits.docker.com/ee/rhel/sub-3de0c2bd-d1ef-4ea4-9552-6650de0e959c'
+    rhversion: '7'
   roles:
-    - geerlingguy.docker
+    - installDockerRH7
+
+
 
 #    TODO(phart) create the hosts name on the fly (extract userid)
+#    ensure this can meet all requirements of https://docs.docker.com/engine/installation/linux/docker-ee/rhel/#os-requirements

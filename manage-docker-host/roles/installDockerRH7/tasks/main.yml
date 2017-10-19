@@ -1,0 +1,57 @@
+---
+- name: create yum variable for docker
+  shell: echo "{{ dockerurl }}/rhel" > /etc/yum/vars/dockerurl
+  args:
+    executable: /bin/bash
+- name: create version number of RH for docker
+  shell: echo "{{ rhversion }}" > /etc/yum/vars/dockerosversion
+  args:
+    executable: /bin/bash
+- name: yum install various packages
+  yum:
+    name: yum-utils,device-mapper-persistent-data,lvm2
+    state: latest
+#- name: add yum repo for RH7 extra , this only works for servers using "subscription manager" which we don't at lowes.
+#  shell: sudo yum-config-manager --enable rhel-7-server-extras-rpms
+#  args:
+#    executable: /bin/bash
+    # not available without more subscription manager
+#- name: add docker-ee repo
+#  shell: sudo -E yum-configure-manager --add-repo "{{ dockerurl }}/rhel/docker-ee.repo"
+#  args:
+#    executable: /bin/bash
+
+# TODO(phart) add a command to loop through rpms in rpms directory and install each (until we can get access to actual repo)
+
+- name: Add repo for docker-ee
+  yum_repository:
+    name: docker-ee-stable
+    description: Docker-ee-stable
+    baseurl: "$dockerurl/$dockerosversion/$basearch/stable"
+    gpgcheck: yes
+    gpgkey: https://storebits.docker.com/ee/rhel/sub-3de0c2bd-d1ef-4ea4-9552-6650de0e959c/gpg
+# Waiting to hear back on how to do this from Mahesh
+#
+
+- name: yum install docker-ee
+  yum:
+    name: docker-ee
+    state: latest
+
+- name: create etc docker dir
+  file:
+    path: /etc/docker
+    state: directory
+    mode: 0750
+
+# assuming for now that I am only one needing to do anything thing with file
+- name: update daemon.json
+  copy:
+    src: files/daemon.json
+    dest: /etc/docker/daemon.json
+    mode: 644
+
+
+
+
+

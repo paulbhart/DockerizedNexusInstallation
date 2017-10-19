@@ -1,0 +1,4 @@
+- name: yum latest Python 27
+  yum:
+    name: python27
+    state: latest

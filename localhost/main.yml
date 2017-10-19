@@ -1,0 +1,9 @@
+- hosts: localhost
+  tasks:
+#  - shell: ansible-galaxy install mongrelion.docker
+#    args:
+#      executable: /usr/local/bin/fish
+  - template:
+      src: ./hosts.yml
+      dest: /Users/phart/Development/git/DockerizedNexusInstallation/localhost/hosts
+
